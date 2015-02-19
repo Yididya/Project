@@ -1,0 +1,40 @@
+@font-face{
+
+	font-family : Monaco;
+	src:url(Monaco.ttf);
+
+
+}
+
+body {
+
+	padding-top:120px;
+	padding-bottom:40px;
+	background-color:#eee;
+
+
+}
+
+.signin-form{
+	max-width :330px;
+	padding:15px;
+	margin: 0 auto;
+
+
+
+}
+
+.signin-form .form-control{
+	border-width:100px solid #eee;
+	border-height:100px solid #eee;
+	font-family:Monaco;
+
+
+}
+.header {
+	border-width : 24px solid white;
+	font-family:Monaco;
+
+
+}
+
