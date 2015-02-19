@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="Teacher Evaluation" nm="Teacher Evaluation" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>C:\Users\Yido\Desktop\Database Design</DocFolder>
+  <Sch Cm="" nm="schemaA">
+    <Tbl UsSo="1" nm="Answers">
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkAnswers"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Question_Id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ClassRoom_Id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="response" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Answers_ClassRoom" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="ClassRoom" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Answers" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="ClassRoom_Id" prCl="Id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_Answers_Question" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="Question" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Answers" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="Question_Id" prCl="Id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="ClassRoom">
+      <Cm>Student course table</Cm>
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkClassRoom"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Instructor_Id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="academic_year" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="semester" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Course_id" nu="1">
+        <DT arr="0" ds="Char" en="" id="1" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_ClassRoom_Course" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="Course" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="ClassRoom" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="Course_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_ClassRoom_Instructor" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="Instructor" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="ClassRoom" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="Instructor_Id" prCl="Id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Course">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkCourse"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="course_code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="credit_hr" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ECTS" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="dept_id" nu="1">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Course_Department" prLkCl="dept_id" upAc="3">
+        <PrTb mn="0" nm="Department" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Course" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="dept_id" prCl="dept_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Department">
+      <TblOpts/>
+      <Pk ClNs="dept_id" nm="pkDepartment"/>
+      <Cl au="1" df="" nm="dept_id" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="dept_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+        <Cm>Department Number</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="dept_head" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Instructor">
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkInstructor"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="instructor_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="dept_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="title" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Instructor_Department" prLkCl="dept_id" upAc="3">
+        <PrTb mn="0" nm="Department" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Instructor" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="dept_id" prCl="dept_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Program">
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkProgram"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="dept_id" nu="1">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="stream" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="program_type" nu="0">
+        <DT arr="0" ds="Enum" en="'regular','extension,'summer''" id="706" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="degree_program" nu="0">
+        <DT arr="0" ds="Enum" en="'Undergraduate','Graduate','PhD','Certificate'" id="706" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Program_Department" prLkCl="dept_id" upAc="3">
+        <PrTb mn="0" nm="Department" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Program" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="dept_id" prCl="dept_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Question">
+      <Cm>questions ...</Cm>
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkQuestion"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="question" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Registration">
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkRegistration"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Student_Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ClassRoom_Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="has_rated" nu="0">
+        <DT arr="0" ds="Enum" en="'Rated','Unrated'" id="706" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Registration_ClassRoom" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="ClassRoom" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Registration" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="ClassRoom_Id" prCl="Id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_Registration_Student" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="Student" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Registration" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="Student_Id" prCl="Id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Student">
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkStudent"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="student_id" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="year" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>year</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="Program_Id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Student_Program" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="Program" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Student" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="Program_Id" prCl="Id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_Student_User" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="User" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="Student" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="student_id" prCl="Id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="User">
+      <Cm>The user ...</Cm>
+      <TblOpts/>
+      <Pk ClNs="Id" nm="pkUser"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="reg_date" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_type" nu="0">
+        <DT arr="0" ds="Enum" en="'student','admin'" id="706" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="1"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="User" x="87" y="13"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Student" x="90" y="225"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Department" x="533" y="275"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Course" x="499" y="431"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="ClassRoom" x="551" y="562"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Instructor" x="564" y="19"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Question" x="119" y="630"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Answers" x="595" y="742"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Program" x="292" y="112"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Registration" x="89" y="471"/>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.Answers.fk_Answers_ClassRoom" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="693" x2="693" y1="677" y2="719"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.Answers.fk_Answers_Question" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="223" x2="223" y1="706" y2="781"/>
+        <positionableLine lineRole="CHILD_LINE" x1="572" x2="227" y1="785" y2="785"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.ClassRoom.fk_ClassRoom_Course" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="641" x2="641" y1="546" y2="539"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.ClassRoom.fk_ClassRoom_Instructor" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="541" x2="563" y1="80" y2="80"/>
+        <positionableLine lineRole="CHILD_LINE" x1="559" x2="559" y1="539" y2="84"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.Course.fk_Course_Department" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="630" x2="630" y1="364" y2="408"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.Instructor.fk_Instructor_Department" parentEdge="NORTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="535" x2="535" y1="252" y2="84"/>
+        <positionableLine lineRole="CHILD_LINE" x1="541" x2="539" y1="80" y2="80"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.Program.fk_Program_Department" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="510" x2="462" y1="330" y2="330"/>
+        <positionableLine lineRole="CHILD_LINE" x1="458" x2="458" y1="240" y2="326"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.Registration.fk_Registration_ClassRoom" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="528" x2="233" y1="575" y2="575"/>
+        <positionableLine lineRole="CHILD_LINE" x1="229" x2="229" y1="573" y2="571"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.Registration.fk_Registration_Student" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="188" x2="188" y1="327" y2="448"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.Student.fk_Student_Program" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="269" x2="280" y1="136" y2="136"/>
+        <positionableLine lineRole="CHILD_LINE" x1="276" x2="276" y1="202" y2="140"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.Student.fk_Student_User" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="199" x2="199" y1="128" y2="202"/>
+      </positionableLines>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="16">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Student" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="14" nNm="student_id" oNm="user_Id"/>
+      <Rnm id="1" nNm="user_Id" oNm="User_Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Department" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="2" nNm="dept_id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Course" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="4" nNm="id" oNm="course_code"/>
+      <Rnm id="3" nNm="course_code" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="ClassRoom" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="5" nNm="student_id" oNm="Student_Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="6" nNm="ClassRoom" oNm="Student-Course"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Course" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="8" nNm="ECTS" oNm="ects"/>
+      <Rnm id="7" nNm="ects" oNm="ECTS"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Student" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="9" nNm="program" oNm="section"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Instructor_course" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="10" nNm="program" oNm="academic_year"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="12" nNm="Question" oNm="Query"/>
+      <Rnm id="11" nNm="Query" oNm="Questions"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Program" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="13" nNm="program_type" oNm="type"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Registration" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="15" nNm="has_rated" oNm="status"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/schemaA</TreePath>
+    <TreePath>/Schemas (1)/schemaA/Tables (10)</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+  </TreePaths>
+</Db>
