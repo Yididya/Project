@@ -1,7 +1,7 @@
 USE evaldb;
 
 
-/************ Update: Tables ***************/
+/************ Update: Tables MySQL format ***************/
 
 /******************** Add Table: Answers ************************/
 
